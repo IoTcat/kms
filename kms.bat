@@ -4,13 +4,12 @@ setlocal enabledelayedexpansion
 cd /d "%~dp0"
 
 set try_keys=0
-goto kms
 
 :get_version
 cls
-echo. Please select your Windows Version:
-echo. 1. Windows 10 home
-echo. 2. Windows 10 pro (professional)
+echo. Please select your Windows Version: 
+echo. 1. Windows 10 home 家庭版
+echo. 2. Windows 10 pro (professional) 专业版 企业版 教育版
 echo. 
 set /p a=Your select = 
 if /i '%a%'=='1' goto version_home
@@ -35,8 +34,14 @@ echo. Start to try Keys...
 echo. 
 for /f   %%i in (keys\%version%.keys)  do (
 	echo. Try key %%i
-	%SystemRoot%\system32\slmgr /ipk %%i
+	cscript /nologo %SystemRoot%\system32\slmgr.vbs /ipk %%i >> %temp%\kms.log
+	findstr "成功地安装了产品密钥" %temp%\kms.log >nul 2>&1 && goto try_key_success
+	findstr "Product activated successfully" %temp%\kms.log >nul 2>&1 && goto try_key_success
 )
+goto fail
+
+
+:try_key_success
 set try_keys=1
 goto kms
 
@@ -65,14 +70,27 @@ goto is_succeed
 :kmsFin
 cls
 echo.
+echo.  KMS Setup successfully!!
 echo. 
-echo. $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
-echo. $                                            $
-echo. $            KMS Setup Finished!!            $
-echo. $                                  IoTcat    $
-echo. $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
-echo. 
-echo. 
-echo.Thanks for your using ~
+echo.  系统激活成功！！感谢您的使用。。
+echo.
+echo.                         呓喵酱(http://iotcat.me)
 echo. 
 pause
+goto end
+
+:fail
+cls
+echo.
+echo. KMS Setup Failture!! 
+echo. Sorry for this.. We will try to improve it..
+echo.
+echo.  抱歉系统激活失败，我们会继续改进。。
+echo.
+echo.                         呓喵酱(http://iotcat.me)
+echo.
+pause
+
+
+:end
+exit
