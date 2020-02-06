@@ -3,8 +3,6 @@
 cd /d "%SystemRoot%\system32"
 echo. Clear old kms service...
 slmgr /upk
-slmgr /ckms
-slmgr /rearm
 echo. 
 echo. $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
 echo. $                                            $
