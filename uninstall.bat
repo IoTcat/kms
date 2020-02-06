@@ -10,5 +10,3 @@ echo. $               Old KMS Cleared!!            $
 echo. $                                  IoTcat    $
 echo. $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
 echo. 
-echo. System will reboot NOW!!!
-shutdown -r -t 0
