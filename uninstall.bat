@@ -13,6 +13,4 @@ echo. $                                  IoTcat    $
 echo. $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
 echo. 
 echo. System will reboot NOW!!!
-echo. 按任意键重启电脑
-pause > nul
 shutdown -r -t 0
