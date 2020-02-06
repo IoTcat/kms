@@ -4,3 +4,11 @@ cd /d "%SystemRoot%\system32"
 slmgr /skms kms.yimian.xyz
 slmgr /ato
 slmgr /xpr
+echo. 
+echo. $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+echo. $                                            $
+echo. $            KMS Setup Finished!!            $
+echo. $                                  IoTcat    $
+echo. $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+echo. 
+pause
