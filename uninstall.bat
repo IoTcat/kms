@@ -10,3 +10,4 @@ echo. $               Old KMS Cleared!!            $
 echo. $                                  IoTcat    $
 echo. $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
 echo. 
+pause
