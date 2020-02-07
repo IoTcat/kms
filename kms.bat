@@ -6,6 +6,7 @@ cd /d "%~dp0"
 set /a try_keys=0, try_version=0
 set key=XXXXX-XXXXX-XXXXX-XXXXX-XXXXX
 set is_chinese=0
+set mypath=%temp%\kms
 
 :get_version
 cls
@@ -17,7 +18,7 @@ echo.
 set /p a=Your select = 
 if /i '%a%'=='1' goto version_home
 if /i '%a%'=='2' goto version_pro
-if /i '%a%'=='3' set /a is_chinese=1 & start notepad trans\select_chinese.txt
+if /i '%a%'=='3' set /a is_chinese=1 & start notepad %mypath%\trans\select_chinese.txt
 echo. Unknown Input....
 goto get_version
 
@@ -42,7 +43,7 @@ cls
 echo. Start to try Keys...
 echo. 
 if %pointer% leq 0 (set "myskip=") else (set "myskip=skip=%pointer%")
-for /f  "%myskip%" %%i in (keys\%version%.keys)  do (
+for /f  "%myskip%" %%i in (%mypath%\keys\%version%.keys)  do (
                call :pointer
                set key=%%i
                 echo. Try key !key!
@@ -91,7 +92,7 @@ echo.  KMS Setup successfully!!
 echo. 
 echo.                IoTcat(http://iotcat.me)
 echo. 
-if /i '!is_chinese!'=='1' start notepad trans\success_chinese.txt
+if /i '!is_chinese!'=='1' start notepad %mypath%\trans\success_chinese.txt
 pause
 goto end
 
@@ -105,13 +106,11 @@ echo. Sorry for this.. We will try to improve it..
 echo.
 echo.                         IoTcat(http://iotcat.me)
 echo.
-if /i '!is_chinese!'=='1' start notepad trans\error_chinese.txt
+if /i '!is_chinese!'=='1' start notepad %mypath%\trans\error_chinese.txt
 pause
 
 
 :end
-echo.Please Delete This Folder.>..\Please_Delete_the_KMS_Folder
-del /S /Q *
 exit
 
 
