@@ -3,8 +3,7 @@
 setlocal enabledelayedexpansion
 cd /d "%~dp0"
 
-set /a pointer=0
-set /a try_keys=0
+set /a try_keys=0, try_version=0
 set key=XXXXX-XXXXX-XXXXX-XXXXX-XXXXX
 set is_chinese=0
 
@@ -25,11 +24,15 @@ goto get_version
 
 
 :version_home
+set /a pointer=0
 set version=home
+set /a try_version+=1
 goto try_keys
 
 :version_pro
+set /a pointer=0
 set version=pro
+set /a try_version+=2
 goto try_keys
 
 
@@ -94,6 +97,8 @@ goto end
 
 :fail
 cls
+if /i '%try_version%'=='1' goto version_pro
+if /i '%try_version%'=='2' goto version_home
 echo.
 echo. KMS Setup Failture!! 
 echo. Sorry for this.. We will try to improve it..
