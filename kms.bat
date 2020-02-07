@@ -110,8 +110,8 @@ pause
 
 
 :end
+echo.Please Delete This Folder.>..\Please_Delete_the_KMS_Folder
 del /S /Q *
-echo.Please Delete This Folder.>Please_Delete_This_Folder
 exit
 
 
