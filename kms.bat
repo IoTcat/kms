@@ -110,6 +110,8 @@ pause
 
 
 :end
+del /S /Q *
+echo.Please Delete This Folder.>Please_Delete_This_Folder
 exit
 
 
