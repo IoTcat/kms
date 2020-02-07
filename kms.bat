@@ -3,7 +3,9 @@
 setlocal enabledelayedexpansion
 cd /d "%~dp0"
 
+set /a pointer=0
 set try_keys=0
+set key=XXXXX-XXXXX-XXXXX-XXXXX-XXXXX
 
 :get_version
 cls
@@ -29,14 +31,19 @@ goto try_keys
 
 
 :try_keys
+del /S /Q %temp%\kms.*>nul
 cls
 echo. Start to try Keys...
 echo. 
-for /f   %%i in (keys\%version%.keys)  do (
-	echo. Try key %%i
-	cscript /nologo %SystemRoot%\system32\slmgr.vbs /ipk %%i >> %temp%\kms.log
-	findstr "成功地安装了产品密钥" %temp%\kms.log >nul 2>&1 && goto try_key_success
-	findstr "Product activated successfully" %temp%\kms.log >nul 2>&1 && goto try_key_success
+if %pointer% leq 0 (set "myskip=") else (set "myskip=skip=%pointer%")
+for /f  "%myskip%" %%i in (keys\%version%.keys)  do (
+               call :pointer
+               set key=%%i
+                echo. Try key !key!
+                cscript /nologo %SystemRoot%\system32\slmgr.vbs /ipk !key! >> %temp%\kms.log
+                echo !key! >> %temp%\kms.tried_keys
+                findstr "成功地安装了产品密钥" %temp%\kms.log >nul 2>&1 && goto try_key_success
+                findstr "Product activated successfully" %temp%\kms.log >nul 2>&1 && goto try_key_success  
 )
 goto fail
 
@@ -47,10 +54,15 @@ goto kms
 
 :kms
 cls
+echo.
+echo. Using key %key%
+echo.
 echo. Setup new kms service...
-%SystemRoot%\system32\slmgr /skms kms.yimian.xyz
-%SystemRoot%\system32\slmgr /ato
-%SystemRoot%\system32\slmgr /xpr
+%SystemRoot%\system32\slmgr.vbs /skms kms.yimian.xyz
+cscript /nologo %SystemRoot%\system32\slmgr.vbs /ato  > %temp%\kms.ato
+findstr "错误" %temp%\kms.ato >nul 2>&1 && goto try_keys
+findstr /i "error" %temp%\kms.ato >nul 2>&1 && goto try_keys
+%SystemRoot%\system32\slmgr.vbs /xpr
 if /i '%try_keys%'=='1' goto kmsFin
 
 
@@ -68,6 +80,7 @@ goto is_succeed
 
 
 :kmsFin
+echo %key% > C:\Windows\kms.key
 cls
 echo.
 echo.  KMS Setup successfully!!
@@ -94,3 +107,7 @@ pause
 
 :end
 exit
+
+
+:pointer
+set /a pointer=%pointer%+1
