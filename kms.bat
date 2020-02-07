@@ -1,5 +1,6 @@
 %1 mshta vbscript:CreateObject("Shell.Application").ShellExecute("cmd.exe","/c %~s0 ::","","runas",1)(window.close)&&exit
 @echo off
+chcp 65001 & cls
 setlocal enabledelayedexpansion
 cd /d "%~dp0"
 
@@ -10,8 +11,8 @@ set key=XXXXX-XXXXX-XXXXX-XXXXX-XXXXX
 :get_version
 cls
 echo. Please select your Windows Version: 
-echo. 1. Windows 10 home ¼ÒÍ¥°æ
-echo. 2. Windows 10 pro (professional) ×¨Òµ°æ ÆóÒµ°æ ½ÌÓı°æ
+echo. 1. Windows 10 home å®¶åº­ç‰ˆ 
+echo. 2. Windows 10 pro (professional) ä¸“ä¸šç‰ˆ ä¼ä¸šç‰ˆ æ•™è‚²ç‰ˆ 
 echo. 
 set /p a=Your select = 
 if /i '%a%'=='1' goto version_home
@@ -42,7 +43,7 @@ for /f  "%myskip%" %%i in (keys\%version%.keys)  do (
                 echo. Try key !key!
                 cscript /nologo %SystemRoot%\system32\slmgr.vbs /ipk !key! >> %temp%\kms.log
                 echo !key! >> %temp%\kms.tried_keys
-                findstr "³É¹¦µØ°²×°ÁË²úÆ·ÃÜÔ¿" %temp%\kms.log >nul 2>&1 && goto try_key_success
+                findstr "æˆåŠŸåœ°å®‰è£…äº†äº§å“å¯†é’¥" %temp%\kms.log >nul 2>&1 && goto try_key_success
                 findstr "Product activated successfully" %temp%\kms.log >nul 2>&1 && goto try_key_success  
 )
 goto fail
@@ -58,9 +59,9 @@ echo.
 echo. Using key %key%
 echo.
 echo. Setup new kms service...
-%SystemRoot%\system32\slmgr.vbs /skms kms.yimian.xyz
+cscript /nologo %SystemRoot%\system32\slmgr.vbs /skms kms.yimian.xyz > %temp%\kms.skms
 cscript /nologo %SystemRoot%\system32\slmgr.vbs /ato  > %temp%\kms.ato
-findstr "´íÎó" %temp%\kms.ato >nul 2>&1 && goto try_keys
+findstr "é”™è¯¯" %temp%\kms.ato >nul 2>&1 && goto try_keys
 findstr /i "error" %temp%\kms.ato >nul 2>&1 && goto try_keys
 %SystemRoot%\system32\slmgr.vbs /xpr
 if /i '%try_keys%'=='1' goto kmsFin
@@ -85,9 +86,9 @@ cls
 echo.
 echo.  KMS Setup successfully!!
 echo. 
-echo.  ÏµÍ³¼¤»î³É¹¦£¡£¡¸ĞĞ»ÄúµÄÊ¹ÓÃ¡£¡£
+echo.  ç³»ç»Ÿæ¿€æ´»æˆåŠŸï¼ï¼æ„Ÿè°¢æ‚¨çš„ä½¿ç”¨ã€‚ã€‚
 echo.
-echo.                         ß½ß÷½´(http://iotcat.me)
+echo.                         å‘“å–µé…±(http://iotcat.me)
 echo. 
 pause
 goto end
@@ -98,9 +99,9 @@ echo.
 echo. KMS Setup Failture!! 
 echo. Sorry for this.. We will try to improve it..
 echo.
-echo.  ±§Ç¸ÏµÍ³¼¤»îÊ§°Ü£¬ÎÒÃÇ»á¼ÌĞø¸Ä½ø¡£¡£
+echo.  æŠ±æ­‰ç³»ç»Ÿæ¿€æ´»å¤±è´¥ï¼Œæˆ‘ä»¬ä¼šç»§ç»­æ”¹è¿›ã€‚ã€‚
 echo.
-echo.                         ß½ß÷½´(http://iotcat.me)
+echo.                         å‘“å–µé…±(http://iotcat.me)
 echo.
 pause
 

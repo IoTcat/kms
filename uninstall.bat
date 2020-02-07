@@ -1,5 +1,6 @@
 %1 mshta vbscript:CreateObject("Shell.Application").ShellExecute("cmd.exe","/c %~s0 ::","","runas",1)(window.close)&&exit
 @echo off
+chcp 65001 & cls
 cd /d "%SystemRoot%\system32"
 echo. Clear old kms service...
 slmgr /upk
@@ -7,8 +8,8 @@ cls
 echo.
 echo.  KMS Removed successfully!!
 echo. 
-echo.  ÏµÍ³ÒÑ»Ö¸´Î´¼¤»î£¡£¡¸ĞĞ»ÄúµÄÊ¹ÓÃ¡£¡£
+echo.  ç³»ç»Ÿå·²æ¢å¤æœªæ¿€æ´»ï¼ï¼æ„Ÿè°¢æ‚¨çš„ä½¿ç”¨ã€‚ã€‚
 echo.
-echo.                         ß½ß÷½´(http://iotcat.me)
+echo.                         å‘“å–µé…±(http://iotcat.me)
 echo. 
 pause
