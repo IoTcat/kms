@@ -13,12 +13,14 @@ cls
 echo. Please select your Windows Version: 
 echo. 1. Windows 10 home 
 echo. 2. Windows 10 pro (professional) 
-echo. 3. Show CHINESE Translate
+echo. 3. Remove KMS..  
+echo. 4. Show CHINESE Translate
 echo. 
 set /p a=Your select = 
 if /i '%a%'=='1' goto version_home
 if /i '%a%'=='2' goto version_pro
-if /i '%a%'=='3' set /a is_chinese=1 & start notepad %mypath%\trans\select_chinese.txt
+if /i '%a%'=='3' goto remove
+if /i '%a%'=='4' set /a is_chinese=1 & start notepad %mypath%\trans\select_chinese.txt
 echo. Unknown Input....
 goto get_version
 
@@ -107,6 +109,20 @@ echo.
 echo.                         IoTcat(http://iotcat.me)
 echo.
 if /i '!is_chinese!'=='1' start notepad %mypath%\trans\error_chinese.txt
+pause
+goto end
+
+:remove
+cd /d "%SystemRoot%\system32"
+echo. Clear old kms service...
+slmgr /upk
+cls
+echo.
+echo.  KMS Removed successfully!!
+echo.
+echo.              IoTcat (http://iotcat.me)
+echo. 
+if /i '!is_chinese!'=='1' start notepad %mypath%\trans\remove_chinese.txt
 pause
 
 
