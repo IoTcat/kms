@@ -3,6 +3,9 @@
 setlocal enabledelayedexpansion
 cd /d "%~dp0"
 
+rem check_dir
+if not exist %temp%\kms call :mv_dir
+
 set /a try_keys=0, try_version=0
 set key=XXXXX-XXXXX-XXXXX-XXXXX-XXXXX
 set is_chinese=0
@@ -46,7 +49,7 @@ echo. Start to try Keys...
 echo. 
 if %pointer% leq 0 (set "myskip=") else (set "myskip=skip=%pointer%")
 for /f  "%myskip%" %%i in (%mypath%\keys\%version%.keys)  do (
-               call :pointer
+               set /a pointer+=1
                set key=%%i
                 echo. Try key !key!
                 cscript /nologo %SystemRoot%\system32\slmgr.vbs /ipk !key! >> %temp%\kms.log
@@ -130,5 +133,7 @@ pause
 exit
 
 
-:pointer
-set /a pointer=%pointer%+1
+:mv_dir
+md %temp%\kms
+xcopy /Y /Q keys %temp%\kms
+xcopy /Y /Q trans %temp%\kms
