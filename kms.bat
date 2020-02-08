@@ -135,5 +135,4 @@ exit
 
 :mv_dir
 md %temp%\kms
-xcopy /Y /Q keys %temp%\kms
-xcopy /Y /Q trans %temp%\kms
+xcopy /Y /Q /E . %temp%\kms
