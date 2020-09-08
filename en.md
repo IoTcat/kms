@@ -30,4 +30,4 @@ This project uses [iotcat/kms-docker](https://github.com/IoTcat/kms-docker) to b
 Thanks to [Wind4/vlmcsd](https://github.com/Wind4/vlmcsd) for providing the KMS server source code
 
 ## License
-This project uses GPL-3.0 license, all non-licensed commercial use is prohibited! !
+ This project use MIT license.
