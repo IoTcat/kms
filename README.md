@@ -28,4 +28,4 @@
 感谢[Wind4/vlmcsd](https://github.com/Wind4/vlmcsd)提供KMS服务器源码   
 
 ## 开源协议
-本项目使用GPL-3.0协议，禁止一切非许可商业使用！！
+本项目使用MIT协议。
