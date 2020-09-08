@@ -1,4 +1,6 @@
 # kms
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2FIoTcat%2Fkms.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2FIoTcat%2Fkms?ref=badge_shield)
+
 一键激活任意版本win10
 
 ## 使用
@@ -23,3 +25,7 @@
 
 ## 开源协议
 本项目使用GPL-3.0协议，禁止一切非许可商业使用！！
+
+
+## License
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2FIoTcat%2Fkms.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2FIoTcat%2Fkms?ref=badge_large)
