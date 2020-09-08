@@ -1,8 +1,14 @@
 # kms
-一键激活任意版本win10
+
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2FIoTcat%2Fkms.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2FIoTcat%2Fkms?ref=badge_shield)
+![size](https://badge-size.herokuapp.com/iotcat/kms/master/kms.bat)
+
+一键激活任意版本win10    
+
+[English Version](./en.md)
 
 ## 使用
-运行kms.bat脚本进行系统激活。   
+运行`kms.bat`脚本或运行[这个可执行文件](https://github.com/IoTcat/kms/releases/download/v1.0/kms.exe)进行系统激活。   
 参考这篇[Blog](https://www.eee.dog/tech/kms.html)
 
 
