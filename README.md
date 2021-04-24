@@ -15,7 +15,7 @@
 ## 进阶
 
 ### 原理
-首选暴力尝试从互联网上搜集的[retail, oem, mak激活码](./keys/mak.keys)。如果仍无法激活，将使用kms服务器配合[gvlk激活码]进行激活。
+快速激活将使用kms服务器配合[gvlk激活码](./keys/gvlk.keys)进行激活。永久激活将暴力尝试所有从互联网上搜集的[retail, oem, mak激活码](./keys/mak.keys)。
 
 
 ### 激活码
