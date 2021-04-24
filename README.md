@@ -8,11 +8,15 @@
 [English Version](./en.md)
 
 ## 使用
-运行`kms.bat`脚本或运行[这个可执行文件](https://github.com/IoTcat/kms/releases/download/v1.0/kms.exe)进行系统激活。   
+运行`kms.bat`脚本或运行[这个可执行文件](https://github.com/IoTcat/kms/releases/download/v1.1/kms.exe)进行系统激活。   
 参考这篇[Blog](https://www.eee.dog/tech/kms.html)
 
 
 ## 进阶
+
+### 原理
+首选暴力尝试从互联网上搜集的[retail, oem, mak激活码](./keys/mak.keys)。如果仍无法激活，将使用kms服务器配合[gvlk激活码]进行激活。
+
 
 ### 激活码
 您的激活码将保存在`C:\Windows\kms.key`

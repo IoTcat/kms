@@ -13,15 +13,15 @@ set mypath=%temp%\kms
 
 :get_version
 cls
-echo. Please select your Windows Version: 
-echo. 1. Windows 10 home 
-echo. 2. Windows 10 pro (professional) 
-echo. 3. Remove KMS..  
+echo. Please select your option: 
+echo. 1. Active Windows 10 Quickly (recommend)
+echo. 2. Active Windows 10 Permanently
+echo. 3. Remove activation..  
 echo. 4. Show CHINESE Translate
 echo. 
 set /p a=Your select = 
-if /i '%a%'=='1' goto version_home
-if /i '%a%'=='2' goto version_pro
+if /i '%a%'=='1' goto use_gvlk
+if /i '%a%'=='2' goto use_mak
 if /i '%a%'=='3' goto remove
 if /i '%a%'=='4' set /a is_chinese=1 & start notepad %mypath%\trans\select_chinese.txt
 echo. Unknown Input....
@@ -29,15 +29,15 @@ goto get_version
 
 
 
-:version_home
+:use_mak
 set /a pointer=0
-set version=home
+set version=mak
 set /a try_version+=1
 goto try_keys
 
-:version_pro
+:use_gvlk
 set /a pointer=0
-set version=pro
+set version=gvlk
 set /a try_version+=2
 goto try_keys
 
@@ -93,7 +93,7 @@ goto is_succeed
 echo %key% > C:\Windows\kms.key
 cls
 echo.
-echo.  KMS Setup successfully!!
+echo.  Windows activated successfully!!
 echo. 
 echo.                IoTcat(http://iotcat.me)
 echo. 
@@ -103,10 +103,10 @@ goto end
 
 :fail
 cls
-if /i '%try_version%'=='1' goto version_pro
-if /i '%try_version%'=='2' goto version_home
+if /i '%try_version%'=='1' goto use_gvlk
+if /i '%try_version%'=='2' goto use_mak
 echo.
-echo. KMS Setup Failture!! 
+echo. Windows activation failed!! 
 echo. Sorry for this.. We will try to improve it..
 echo.
 echo.                         IoTcat(http://iotcat.me)
@@ -117,11 +117,11 @@ goto end
 
 :remove
 cd /d "%SystemRoot%\system32"
-echo. Clear old kms service...
+echo. Clear old activation keys and KMS service...
 slmgr /upk
 cls
 echo.
-echo.  KMS Removed successfully!!
+echo.  Windows activation removed successfully!!
 echo.
 echo.              IoTcat (http://iotcat.me)
 echo. 
