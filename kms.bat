@@ -1,8 +1,10 @@
-%1 mshta vbscript:CreateObject("Shell.Application").ShellExecute("cmd.exe","/c %~s0 ::","","runas",1)(window.close)&&exit
+﻿%1 mshta vbscript:CreateObject("Shell.Application").ShellExecute("cmd.exe","/c %~s0 ::","","runas",1)(window.close)&&exit
 @echo off
 setlocal enabledelayedexpansion
 cd /d "%~dp0"
+
 chcp 65001
+
 rem check_dir
 if not exist %temp%\kms call :mv_dir
 
@@ -13,6 +15,7 @@ set mypath=%temp%\kms
 
 :get_lang
 cls
+chcp 65001
 echo. Please select your language:
 echo. 请选择显示语言: 
 echo. 1. English 英语
