@@ -1,8 +1,6 @@
 # kms
 
-[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2FIoTcat%2Fkms.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2FIoTcat%2Fkms?ref=badge_shield)
-![size](https://badge-size.herokuapp.com/iotcat/kms/master/kms.bat)
-
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2FIoTcat%2Fkms.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2FIoTcat%2Fkms?ref=badge_shield)   
 一键激活任意版本Windows 8/10/11    
 
 > 本项目仅供学术测试目的！请在激活后24小时内自行注销激活！谢谢！   
