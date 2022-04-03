@@ -2,7 +2,7 @@
 @echo off
 setlocal enabledelayedexpansion
 cd /d "%~dp0"
-
+chcp 65001
 rem check_dir
 if not exist %temp%\kms call :mv_dir
 
@@ -14,14 +14,14 @@ set mypath=%temp%\kms
 :get_lang
 cls
 echo. Please select your language:
-echo. ÇëÑ¡ÔñÏÔÊ¾ÓïÑÔ£º
-echo. 1. English Ó¢Óï
-echo. 2. Chinese ººÓï
-set /p a=Your select ÇëÊäÈëÊı×Ö²¢»Ø³µ = 
+echo. è¯·é€‰æ‹©æ˜¾ç¤ºè¯­è¨€: 
+echo. 1. English è‹±è¯­
+echo. 2. Chinese æ±‰è¯­
+set /p a=Your select è¯·è¾“å…¥æ•°å­—å¹¶å›è½¦ = 
 if /i '%a%'=='1' goto get_version
 if /i '%a%'=='2' set /a is_chinese=1 & goto get_version
 echo. Unknown Input...
-echo. ²»ºÏ·¨ÊäÈë...
+echo. ä¸åˆæ³•è¾“å…¥...
 goto get_lang
 
 
@@ -37,12 +37,12 @@ set /p a=Your select =
 goto get_version_end
 
 :get_version_ch
-echo. ÇëÑ¡ÔñÄãÒª½øĞĞµÄ²Ù×÷£º
-echo. 1. ¿ìËÙ¼¤»îWindows 8/10/11£¨ÍÆ¼ö£©
-echo. 2. ³¢ÊÔÓÀ¾Ã¼¤»îWindows 8/10/11
-echo. 3. ×¢ÏúÒÑÓĞ¼¤»î
+echo. è¯·é€‰æ‹©ä½ è¦è¿›è¡Œçš„æ“ä½œï¼š
+echo. 1. å¿«é€Ÿæ¿€æ´»Windows 8/10/11ï¼ˆæ¨èï¼‰
+echo. 2. å°è¯•æ°¸ä¹…æ¿€æ´»Windows 8/10/11
+echo. 3. æ³¨é”€å·²æœ‰æ¿€æ´»
 echo. 
-set /p a=ÄãµÄÑ¡Ôñ = 
+set /p a=ä½ çš„é€‰æ‹© = 
 
 :get_version_end
 if /i '%a%'=='1' goto use_gvlk
@@ -76,7 +76,7 @@ echo. Start to try Keys...
 echo. 
 goto try_keys_end
 :try_keys_ch
-echo. ¿ªÊ¼Åö×²¼¤»îÂë...
+echo. å¼€å§‹ç¢°æ’æ¿€æ´»ç ...
 echo.
 :try_keys_end
 if %pointer% leq 0 (set "myskip=") else (set "myskip=skip=%pointer%")
@@ -105,9 +105,9 @@ echo. Setup new kms service...
 goto kms_end
 :kms_ch
 echo.
-echo. ÕıÔÚ³¢ÊÔ¼¤»îÂë %key%
+echo. æ­£åœ¨å°è¯•æ¿€æ´»ç  %key%
 echo.
-echo. kms·şÎñÔËĞĞÖĞ...
+echo. kmsæœåŠ¡è¿è¡Œä¸­...
 :kms_end
 cscript /nologo %SystemRoot%\system32\slmgr.vbs /skms kms.yimian.xyz > %temp%\kms.skms
 cscript /nologo %SystemRoot%\system32\slmgr.vbs /ato  > %temp%\kms.ato
@@ -126,11 +126,11 @@ echo.
 set /p a=Your select = 
 goto is_succeed_end
 :is_succeed_ch
-echo. ÊÇ·ñ¼¤»î³É¹¦£¿
-echo. 1. ÊÇ
-echo. 2. ·ñ
+echo. æ˜¯å¦æ¿€æ´»æˆåŠŸï¼Ÿ
+echo. 1. æ˜¯
+echo. 2. å¦
 echo.
-set /p a=ÇëÊäÈëÊı×Ö²¢»Ø³µ =
+set /p a=è¯·è¾“å…¥æ•°å­—å¹¶å›è½¦ =
 :is_succeed_end
 if /i '%a%'=='1' goto kmsFin
 if /i '%a%'=='2' goto get_version
@@ -150,12 +150,13 @@ echo.
 goto kmsFin_end
 :kmsFin_ch
 echo.
-echo. WindowsÏµÍ³¼¤»î³É¹¦£¡£¡
+echo. Windowsç³»ç»Ÿæ¿€æ´»æˆåŠŸï¼ï¼
 echo. 
 echo.                 IoTcat(http://iotcat.me)
 echo.
 :kmsFin_end
-pause
+echo. æŒ‰ä»»æ„é”®é€€å‡º..
+pause > nul
 goto end
 
 :fail
@@ -172,13 +173,14 @@ echo.
 goto fail_end
 :fail_ch
 echo.
-echo. Windows¼¤»îÊ§°Ü£¡
-echo. ·Ç³£±§Ç¸£¬ÎÒÃÇ»á¼ÌĞø¸Ä½ø...
+echo. Windowsæ¿€æ´»å¤±è´¥ï¼
+echo. éå¸¸æŠ±æ­‰ï¼Œæˆ‘ä»¬ä¼šç»§ç»­æ”¹è¿›...
 echo.
 echo.                          IoTcat(http://iotcat.me)
 echo.
 :fail_end
-pause
+echo. æŒ‰ä»»æ„é”®é€€å‡º..
+pause > nul
 goto end
 
 :remove
@@ -195,12 +197,13 @@ echo.
 goto remove_end
 :remove_ch
 echo.
-echo.  Windows¼¤»îÒÑ³É¹¦×¢Ïú£¡
+echo.  Windowsæ¿€æ´»å·²æˆåŠŸæ³¨é”€ï¼
 echo. 
 echo.                   IoTcat(http://iotcat.me)
 echo.
 :remove_end
-pause
+echo. æŒ‰ä»»æ„é”®é€€å‡º..
+pause > nul
 
 
 :end
